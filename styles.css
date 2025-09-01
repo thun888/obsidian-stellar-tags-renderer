@@ -1,8 +1,1046 @@
-/*
+blur {
+    filter: blur(4px);
+    -webkit-transition: all .2s ease-out;
+    transition: all .2s ease-out;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+blur:hover {
+    filter: none;
+}
 
-If your plugin does not need CSS, delete this file.
+psw {
+    color: transparent;
+    background: #a1a1a1;
+    border-radius: 2px;
+    transition: background .2s ease-out;
+    -moz-transition: background .2s ease-out;
+    -webkit-transition: background .2s ease-out;
+    -o-transition: background .2s ease-out;
+    margin: auto 2px;
+}
 
-*/
+psw:hover {
+    background: transparent;
+    color: #a1a1a1;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 2px solid var(--accent);
+}
+
+emp {
+    width: fit-content;
+    text-decoration: none;
+    border-bottom: 4px dotted var(--accent);
+}
+
+wavy {
+    text-decoration: underline wavy var(--accent);
+}
+
+del {
+    color: var(--text-p3);
+    text-decoration: line-through var(--text-p3);
+}
+
+sub, sup {
+    color: var(--theme);
+    line-height: 1;
+    font-weight: 700;
+}
+
+sup {
+    vertical-align: super;
+    font-size: smaller;
+}
+
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
+
+kbd {
+    border-radius: 4px;
+    border: 1px solid #d2d2d2;
+    border-bottom-width: 2px;
+    background: var(--card);
+    padding: 2px 4px 1px 4px;
+    font-weight: 700;
+}
+
+
+.tag-plugin.checkbox {
+    display: flex;
+    align-items: center;
+    font-size: .9375rem;
+    line-height: 1.2;
+    --gap-p: calc(var(--gap-p-compact) / 2)
+}
+
+.tag-plugin.checkbox input {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    -o-appearance: none;
+    appearance: none;
+    position: relative;
+    height: 16px;
+    width: 16px;
+    cursor: pointer;
+    display: inline-block;
+    outline: 0;
+    border-radius: 2px;
+    flex-shrink: 0;
+    margin-right: 8px;
+    pointer-events: none
+}
+
+.tag-plugin.checkbox input[type=checkbox]:after,.tag-plugin.checkbox input[type=checkbox]:before {
+    position: absolute;
+    content: "";
+    background: var(--background)
+}
+
+.tag-plugin.checkbox input[type=checkbox]:before {
+    left: 1px;
+    top: 5px;
+    width: 0;
+    height: 2px;
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    -o-transform: rotate(45deg)
+}
+
+.tag-plugin.checkbox input[type=checkbox]:after {
+    right: 7px;
+    bottom: 3px;
+    width: 2px;
+    height: 0;
+    transform: rotate(40deg);
+    -webkit-transform: rotate(40deg);
+    -moz-transform: rotate(40deg);
+    -ms-transform: rotate(40deg);
+    -o-transform: rotate(40deg)
+}
+
+.tag-plugin.checkbox input[type=checkbox]:checked:before {
+    left: 0;
+    top: 7px;
+    width: 6px;
+    height: 2px
+}
+
+.tag-plugin.checkbox input[type=checkbox]:checked:after {
+    right: 3px;
+    bottom: 1px;
+    width: 2px;
+    height: 10px
+}
+
+.tag-plugin.checkbox[symbol=minus] input[type=checkbox]:before {
+    transform: rotate(0);
+    left: 1px;
+    top: 5px;
+    width: 0;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=minus] input[type=checkbox]:after {
+    transform: rotate(0);
+    left: 1px;
+    top: 5px;
+    width: 0;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=minus] input[type=checkbox]:checked:before {
+    left: 1px;
+    top: 5px;
+    width: 10px;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=minus] input[type=checkbox]:checked:after {
+    left: 1px;
+    top: 5px;
+    width: 10px;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=plus] input[type=checkbox]:before {
+    transform: rotate(0);
+    left: 1px;
+    top: 5px;
+    width: 0;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=plus] input[type=checkbox]:after {
+    transform: rotate(0);
+    left: 5px;
+    top: 1px;
+    width: 2px;
+    height: 0
+}
+
+.tag-plugin.checkbox[symbol=plus] input[type=checkbox]:checked:before {
+    left: 1px;
+    top: 5px;
+    width: 10px;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=plus] input[type=checkbox]:checked:after {
+    left: 5px;
+    top: 1px;
+    width: 2px;
+    height: 10px
+}
+
+.tag-plugin.checkbox[symbol=times] input[type=checkbox]:before {
+    transform: rotate(45deg);
+    left: 3px;
+    top: 1px;
+    width: 0;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=times] input[type=checkbox]:after {
+    transform: rotate(135deg);
+    right: 3px;
+    top: 1px;
+    width: 0;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=times] input[type=checkbox]:checked:before {
+    left: 1px;
+    top: 5px;
+    width: 10px;
+    height: 2px
+}
+
+.tag-plugin.checkbox[symbol=times] input[type=checkbox]:checked:after {
+    right: 1px;
+    top: 5px;
+    width: 10px;
+    height: 2px
+}
+
+.tag-plugin.checkbox input[type=radio] {
+    border-radius: 50%;
+    transform: translateY(-1px)
+}
+
+.tag-plugin.checkbox input[type=radio]:before {
+    content: "";
+    display: block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin: 2px;
+    transform: scale(0)
+}
+
+.tag-plugin.checkbox input[type=radio]:checked:before {
+    transform: scale(1)
+}
+
+.tag-plugin.checkbox input {
+    border: 2px solid var(--theme);
+}
+
+.tag-plugin.checkbox input[type=checkbox]:checked {
+    background: var(--theme);
+}
+
+.tag-plugin.checkbox input[type=radio]:checked:before {
+    background: var(--theme)
+}
+
+.tag-plugin.checkbox:not([color]) {
+    --theme: #2196f3
+}
+
+
+.colorful[color=red] {
+    --hue: 4.105263157894738deg;
+    --sat: 89.62264150943398%;
+    --light: 58.43137254901961%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 1);
+    --link-a20: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 0.2);
+    --theme-border: hsla(4.105263157894738deg 50% 80% / var(--alpha));
+    --theme-block: hsla(4.105263157894738deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(4.105263157894738deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(4.105263157894738deg 50% 95% / var(--alpha));
+    --text: hsla(4.105263157894738deg 55% 16% / 1);
+    --text-p1: hsla(4.105263157894738deg 90% 20% / 1);
+    --text-p2: hsla(4.105263157894738deg 90% 20% / 0.8);
+    --text-p3: hsla(4.105263157894738deg 90% 20% / 0.6);
+    --text-p4: hsla(4.105263157894738deg 90% 20% / 0.4);
+    --link: hsla(4.105263157894738deg 95% 32% / 1);
+    --link-a20: hsla(4.105263157894738deg 95% 32% / 0.2)
+}
+
+.colorful[color=orange] {
+    --hue: 24deg;
+    --sat: 100%;
+    --light: 49.01960784313725%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(24deg 100% 49.01960784313725% / 1);
+    --link-a20: hsla(24deg 100% 49.01960784313725% / 0.2);
+    --theme-border: hsla(24deg 50% 80% / var(--alpha));
+    --theme-block: hsla(24deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(24deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(24deg 50% 95% / var(--alpha));
+    --text: hsla(24deg 55% 16% / 1);
+    --text-p1: hsla(24deg 90% 20% / 1);
+    --text-p2: hsla(24deg 90% 20% / 0.8);
+    --text-p3: hsla(24deg 90% 20% / 0.6);
+    --text-p4: hsla(24deg 90% 20% / 0.4);
+    --link: hsla(24deg 95% 32% / 1);
+    --link-a20: hsla(24deg 95% 32% / 0.2)
+}
+
+.colorful[color=amber] {
+    --hue: 41.320754716981135deg;
+    --sat: 100%;
+    --light: 58.43137254901961%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(41.320754716981135deg 100% 58.43137254901961% / 1);
+    --link-a20: hsla(41.320754716981135deg 100% 58.43137254901961% / 0.2);
+    --theme-border: hsla(41.320754716981135deg 50% 80% / var(--alpha));
+    --theme-block: hsla(41.320754716981135deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(41.320754716981135deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(41.320754716981135deg 50% 95% / var(--alpha));
+    --text: hsla(41.320754716981135deg 55% 16% / 1);
+    --text-p1: hsla(41.320754716981135deg 90% 20% / 1);
+    --text-p2: hsla(41.320754716981135deg 90% 20% / 0.8);
+    --text-p3: hsla(41.320754716981135deg 90% 20% / 0.6);
+    --text-p4: hsla(41.320754716981135deg 90% 20% / 0.4);
+    --link: hsla(41.320754716981135deg 95% 32% / 1);
+    --link-a20: hsla(41.320754716981135deg 95% 32% / 0.2)
+}
+
+.colorful[color=yellow] {
+    --hue: 50.96385542168675deg;
+    --sat: 100%;
+    --light: 67.45098039215686%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(50.96385542168675deg 100% 67.45098039215686% / 1);
+    --link-a20: hsla(50.96385542168675deg 100% 67.45098039215686% / 0.2);
+    --theme-border: hsla(50.96385542168675deg 50% 80% / var(--alpha));
+    --theme-block: hsla(50.96385542168675deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(50.96385542168675deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(50.96385542168675deg 50% 95% / var(--alpha));
+    --text: hsla(50.96385542168675deg 55% 16% / 1);
+    --text-p1: hsla(50.96385542168675deg 90% 20% / 1);
+    --text-p2: hsla(50.96385542168675deg 90% 20% / 0.8);
+    --text-p3: hsla(50.96385542168675deg 90% 20% / 0.6);
+    --text-p4: hsla(50.96385542168675deg 90% 20% / 0.4);
+    --link: hsla(50.96385542168675deg 95% 32% / 1);
+    --link-a20: hsla(50.96385542168675deg 95% 32% / 0.2)
+}
+
+.colorful[color=green] {
+    --hue: 128.38235294117646deg;
+    --sat: 53.96825396825397%;
+    --light: 50.588235294117645%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(128.38235294117646deg 53.96825396825397% 50.588235294117645% / 1);
+    --link-a20: hsla(128.38235294117646deg 53.96825396825397% 50.588235294117645% / 0.2);
+    --theme-border: hsla(128.38235294117646deg 50% 80% / var(--alpha));
+    --theme-block: hsla(128.38235294117646deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(128.38235294117646deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(128.38235294117646deg 50% 95% / var(--alpha));
+    --text: hsla(128.38235294117646deg 55% 16% / 1);
+    --text-p1: hsla(128.38235294117646deg 90% 20% / 1);
+    --text-p2: hsla(128.38235294117646deg 90% 20% / 0.8);
+    --text-p3: hsla(128.38235294117646deg 90% 20% / 0.6);
+    --text-p4: hsla(128.38235294117646deg 90% 20% / 0.4);
+    --link: hsla(128.38235294117646deg 95% 32% / 1);
+    --link-a20: hsla(128.38235294117646deg 95% 32% / 0.2)
+}
+
+.colorful[color=cyan] {
+    --hue: 192.53333333333333deg;
+    --sat: 97.40259740259742%;
+    --light: 54.70588235294118%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(192.53333333333333deg 97.40259740259742% 54.70588235294118% / 1);
+    --link-a20: hsla(192.53333333333333deg 97.40259740259742% 54.70588235294118% / 0.2);
+    --theme-border: hsla(192.53333333333333deg 50% 80% / var(--alpha));
+    --theme-block: hsla(192.53333333333333deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(192.53333333333333deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(192.53333333333333deg 50% 95% / var(--alpha));
+    --text: hsla(192.53333333333333deg 55% 16% / 1);
+    --text-p1: hsla(192.53333333333333deg 90% 20% / 1);
+    --text-p2: hsla(192.53333333333333deg 90% 20% / 0.8);
+    --text-p3: hsla(192.53333333333333deg 90% 20% / 0.6);
+    --text-p4: hsla(192.53333333333333deg 90% 20% / 0.4);
+    --link: hsla(192.53333333333333deg 95% 32% / 1);
+    --link-a20: hsla(192.53333333333333deg 95% 32% / 0.2)
+}
+
+.colorful[color=blue] {
+    --hue: 206.57142857142856deg;
+    --sat: 89.74358974358974%;
+    --light: 54.11764705882353%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(206.57142857142856deg 89.74358974358974% 54.11764705882353% / 1);
+    --link-a20: hsla(206.57142857142856deg 89.74358974358974% 54.11764705882353% / 0.2);
+    --theme-border: hsla(206.57142857142856deg 50% 80% / var(--alpha));
+    --theme-block: hsla(206.57142857142856deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(206.57142857142856deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(206.57142857142856deg 50% 95% / var(--alpha));
+    --text: hsla(206.57142857142856deg 55% 16% / 1);
+    --text-p1: hsla(206.57142857142856deg 90% 20% / 1);
+    --text-p2: hsla(206.57142857142856deg 90% 20% / 0.8);
+    --text-p3: hsla(206.57142857142856deg 90% 20% / 0.6);
+    --text-p4: hsla(206.57142857142856deg 90% 20% / 0.4);
+    --link: hsla(206.57142857142856deg 95% 32% / 1);
+    --link-a20: hsla(206.57142857142856deg 95% 32% / 0.2)
+}
+
+.colorful[color=purple] {
+    --hue: 291.24087591240874deg;
+    --sat: 63.72093023255814%;
+    --light: 42.15686274509804%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(291.24087591240874deg 63.72093023255814% 42.15686274509804% / 1);
+    --link-a20: hsla(291.24087591240874deg 63.72093023255814% 42.15686274509804% / 0.2);
+    --theme-border: hsla(291.24087591240874deg 50% 80% / var(--alpha));
+    --theme-block: hsla(291.24087591240874deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(291.24087591240874deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(291.24087591240874deg 50% 95% / var(--alpha));
+    --text: hsla(291.24087591240874deg 55% 16% / 1);
+    --text-p1: hsla(291.24087591240874deg 90% 20% / 1);
+    --text-p2: hsla(291.24087591240874deg 90% 20% / 0.8);
+    --text-p3: hsla(291.24087591240874deg 90% 20% / 0.6);
+    --text-p4: hsla(291.24087591240874deg 90% 20% / 0.4);
+    --link: hsla(291.24087591240874deg 95% 32% / 1);
+    --link-a20: hsla(291.24087591240874deg 95% 32% / 0.2)
+}
+
+.colorful[color=theme] {
+    --hue: 192deg;
+    --sat: 98%;
+    --light: 55%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(192deg 98% 55% / 1);
+    --link-a20: hsla(192deg 98% 55% / 0.2);
+    --theme-border: hsla(192deg 50% 80% / var(--alpha));
+    --theme-block: hsla(192deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(192deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(192deg 50% 95% / var(--alpha));
+    --text: hsla(192deg 55% 16% / 1);
+    --text-p1: hsla(192deg 90% 20% / 1);
+    --text-p2: hsla(192deg 90% 20% / 0.8);
+    --text-p3: hsla(192deg 90% 20% / 0.6);
+    --text-p4: hsla(192deg 90% 20% / 0.4);
+    --link: hsla(192deg 95% 32% / 1);
+    --link-a20: hsla(192deg 95% 32% / 0.2)
+}
+
+.colorful[color=accent] {
+    --hue: 14deg;
+    --sat: 100%;
+    --light: 57%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(14deg 100% 57% / 1);
+    --link-a20: hsla(14deg 100% 57% / 0.2);
+    --theme-border: hsla(14deg 50% 80% / var(--alpha));
+    --theme-block: hsla(14deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(14deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(14deg 50% 95% / var(--alpha));
+    --text: hsla(14deg 55% 16% / 1);
+    --text-p1: hsla(14deg 90% 20% / 1);
+    --text-p2: hsla(14deg 90% 20% / 0.8);
+    --text-p3: hsla(14deg 90% 20% / 0.6);
+    --text-p4: hsla(14deg 90% 20% / 0.4);
+    --link: hsla(14deg 95% 32% / 1);
+    --link-a20: hsla(14deg 95% 32% / 0.2)
+}
+
+.colorful[color=light] {
+    --theme: #fff;
+    --theme-block: var(--theme);
+    --theme-mark: var(--theme);
+    --theme-codeblock: var(--theme);
+    --background: hsla(210deg 20% 98% / 1);
+    --card: #fff;
+    --bg-a20: hsla(210deg 0% 100% / 0.2);
+    --bg-a50: hsla(210deg 0% 100% / 0.5);
+    --bg-a60: hsla(210deg 0% 100% / 0.6);
+    --bg-a75: hsla(210deg 0% 100% / 0.75);
+    --bg-a100: hsla(210deg 0% 100% / 1);
+    --text: hsla(210deg 0% 0% / 1);
+    --text-reverse: hsla(210deg 0% 100% / 1);
+    --text-p1: hsla(210deg 0% 0% / 0.8);
+    --text-p2: hsla(210deg 0% 0% / 0.7);
+    --text-p3: hsla(210deg 0% 0% / 0.5);
+    --text-p4: hsla(210deg 0% 0% / 0.4);
+    --text-meta: hsla(210deg 0% 0% / 0.2);
+    --text-code: hsla(210deg 0% 0% / 0.9);
+    --text-a10: hsla(210deg 0% 0% / 0.1);
+    --text-a20: hsla(210deg 0% 0% / 0.2);
+    --block: hsla(210deg 50% 12% / 0.04);
+    --block-border: hsla(210deg 50% 12% / 0.06)
+}
+
+.colorful[color=dark] {
+    --background: hsla(210deg 8% 12% / 1);
+    --card: hsla(210deg 10% 24% / 1);
+    --bg-a20: hsla(210deg 0% 0% / 0.2);
+    --bg-a50: hsla(210deg 0% 0% / 0.5);
+    --bg-a60: hsla(210deg 0% 0% / 0.6);
+    --bg-a75: hsla(210deg 0% 0% / 0.75);
+    --bg-a100: hsla(210deg 0% 0% / 1);
+    --text: hsla(210deg 0% 100% / 1);
+    --text-reverse: hsla(210deg 0% 0% / 1);
+    --text-p1: hsla(210deg 0% 100% / 0.8);
+    --text-p2: hsla(210deg 0% 100% / 0.7);
+    --text-p3: hsla(210deg 0% 100% / 0.5);
+    --text-p4: hsla(210deg 0% 100% / 0.4);
+    --text-meta: hsla(210deg 0% 100% / 0.2);
+    --text-code: hsla(210deg 0% 100% / 0.9);
+    --text-a10: hsla(210deg 0% 100% / 0.1);
+    --text-a20: hsla(210deg 0% 100% / 0.2);
+    --block: hsla(210deg 24% 72% / 0.08);
+    --block-border: hsla(210deg 24% 72% / 0.12);
+    --text-code: hsla(20 75 60 / 1);
+    --theme: #111;
+    --theme-border: none;
+    --theme-block: var(--theme);
+    --theme-mark: var(--theme);
+    --theme-codeblock: var(--theme)
+}
+
+@media screen and (max-width: 667px) {
+    .colorful[color=dark] {
+        --background:#000
+    }
+}
+
+.colorful[color=warning] {
+    --hue: 50.96385542168675deg;
+    --sat: 100%;
+    --light: 67.45098039215686%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(50.96385542168675deg 100% 67.45098039215686% / 1);
+    --link-a20: hsla(50.96385542168675deg 100% 67.45098039215686% / 0.2);
+    --theme-border: hsla(50.96385542168675deg 50% 80% / var(--alpha));
+    --theme-block: hsla(50.96385542168675deg 90% 92% / var(--alpha));
+    --theme-mark: hsla(50.96385542168675deg 95% 80% / var(--alpha));
+    --theme-codeblock: hsla(50.96385542168675deg 50% 95% / var(--alpha));
+    --text: hsla(50.96385542168675deg 55% 16% / 1);
+    --text-p1: hsla(50.96385542168675deg 90% 20% / 1);
+    --text-p2: hsla(50.96385542168675deg 90% 20% / 0.8);
+    --text-p3: hsla(50.96385542168675deg 90% 20% / 0.6);
+    --text-p4: hsla(50.96385542168675deg 90% 20% / 0.4);
+    --link: hsla(50.96385542168675deg 95% 32% / 1);
+    --link-a20: hsla(50.96385542168675deg 95% 32% / 0.2);
+    --background: hsla(210deg 20% 98% / 1);
+    --card: #fff;
+    --bg-a20: hsla(210deg 0% 100% / 0.2);
+    --bg-a50: hsla(210deg 0% 100% / 0.5);
+    --bg-a60: hsla(210deg 0% 100% / 0.6);
+    --bg-a75: hsla(210deg 0% 100% / 0.75);
+    --bg-a100: hsla(210deg 0% 100% / 1);
+    --text: hsla(210deg 0% 0% / 1);
+    --text-reverse: hsla(210deg 0% 100% / 1);
+    --text-p1: hsla(210deg 0% 0% / 0.8);
+    --text-p2: hsla(210deg 0% 0% / 0.7);
+    --text-p3: hsla(210deg 0% 0% / 0.5);
+    --text-p4: hsla(210deg 0% 0% / 0.4);
+    --text-meta: hsla(210deg 0% 0% / 0.2);
+    --text-code: hsla(210deg 0% 0% / 0.9);
+    --text-a10: hsla(210deg 0% 0% / 0.1);
+    --text-a20: hsla(210deg 0% 0% / 0.2);
+    --block: hsla(210deg 50% 12% / 0.04);
+    --block-border: hsla(210deg 50% 12% / 0.06);
+    --link: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 1);
+    --link-a20: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 0.2);
+    --theme-border: none;
+    --theme-block: var(--theme);
+    --text-code: var(--text-p1)
+}
+
+.colorful[color=error] {
+    --hue: 4.105263157894738deg;
+    --sat: 89.62264150943398%;
+    --light: 58.43137254901961%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --link: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 1);
+    --link-a20: hsla(4.105263157894738deg 89.62264150943398% 58.43137254901961% / 0.2);
+    --theme-border: hsla(4.105263157894738deg 40% 24% / var(--alpha));
+    --theme-block: hsla(4.105263157894738deg 24% 24% / var(--alpha));
+    --theme-mark: hsla(4.105263157894738deg 24% 24% / var(--alpha));
+    --theme-codeblock: hsla(4.105263157894738deg 12% 24% / var(--alpha));
+    --text: hsla(4.105263157894738deg 50% 75% / 1);
+    --text-p1: hsla(4.105263157894738deg 80% 80% / 1);
+    --text-p2: hsla(4.105263157894738deg 80% 80% / 0.8);
+    --text-p3: hsla(4.105263157894738deg 80% 80% / 0.6);
+    --text-p4: hsla(4.105263157894738deg 80% 80% / 0.4);
+    --link: hsla(4.105263157894738deg 80% 60% / 1);
+    --link-a20: hsla(4.105263157894738deg 80% 60% / 0.2);
+    --background: hsla(210deg 8% 12% / 1);
+    --card: hsla(210deg 10% 24% / 1);
+    --bg-a20: hsla(210deg 0% 0% / 0.2);
+    --bg-a50: hsla(210deg 0% 0% / 0.5);
+    --bg-a60: hsla(210deg 0% 0% / 0.6);
+    --bg-a75: hsla(210deg 0% 0% / 0.75);
+    --bg-a100: hsla(210deg 0% 0% / 1);
+    --text: hsla(210deg 0% 100% / 1);
+    --text-reverse: hsla(210deg 0% 0% / 1);
+    --text-p1: hsla(210deg 0% 100% / 0.8);
+    --text-p2: hsla(210deg 0% 100% / 0.7);
+    --text-p3: hsla(210deg 0% 100% / 0.5);
+    --text-p4: hsla(210deg 0% 100% / 0.4);
+    --text-meta: hsla(210deg 0% 100% / 0.2);
+    --text-code: hsla(210deg 0% 100% / 0.9);
+    --text-a10: hsla(210deg 0% 100% / 0.1);
+    --text-a20: hsla(210deg 0% 100% / 0.2);
+    --block: hsla(210deg 24% 72% / 0.08);
+    --block-border: hsla(210deg 24% 72% / 0.12);
+    --text-code: hsla(20 75 60 / 1);
+    --link: hsla(50.96385542168675deg 100% 67.45098039215686% / 1);
+    --link-a20: hsla(50.96385542168675deg 100% 67.45098039215686% / 0.2);
+    --theme-border: none;
+    --theme-block: var(--theme);
+    --text-code: var(--text-p1)
+}
+
+:root {
+    --hue: 192deg;
+    --sat: 98%;
+    --light: 55%;
+    --alpha: 1;
+    --theme: hsla(var(--hue) var(--sat) var(--light) / 1);
+    --theme-a10: hsla(var(--hue) var(--sat) var(--light) / 0.1);
+    --theme-a20: hsla(var(--hue) var(--sat) var(--light) / 0.2);
+    --theme-a30: hsla(var(--hue) var(--sat) var(--light) / 0.3);
+    --accent: #ff5724;
+    --link: hsla(207deg 90% 54% / 1);
+    --link-a20: hsla(207deg 90% 54% / 0.2);
+    --background: hsla(210deg 20% 98% / 1);
+    --card: #fff;
+    --bg-a20: hsla(210deg 0% 100% / 0.2);
+    --bg-a50: hsla(210deg 0% 100% / 0.5);
+    --bg-a60: hsla(210deg 0% 100% / 0.6);
+    --bg-a75: hsla(210deg 0% 100% / 0.75);
+    --bg-a100: hsla(210deg 0% 100% / 1);
+    --text: hsla(210deg 0% 0% / 1);
+    --text-reverse: hsla(210deg 0% 100% / 1);
+    --text-p1: hsla(210deg 0% 0% / 0.8);
+    --text-p2: hsla(210deg 0% 0% / 0.7);
+    --text-p3: hsla(210deg 0% 0% / 0.5);
+    --text-p4: hsla(210deg 0% 0% / 0.4);
+    --text-meta: hsla(210deg 0% 0% / 0.2);
+    --text-code: hsla(210deg 0% 0% / 0.9);
+    --text-a10: hsla(210deg 0% 0% / 0.1);
+    --text-a20: hsla(210deg 0% 0% / 0.2);
+    --block: hsla(210deg 50% 12% / 0.04);
+    --block-border: hsla(210deg 50% 12% / 0.06);
+}
+
+:root {
+    --width-main: 720px;
+    --fsp: 17px;
+    --fsh2: calc(var(--fsp) + 11px);
+    --fsh3: calc(var(--fsp) + 7px);
+    --fsh4: calc(var(--fsp) + 4px);
+    --side-content-width: 224px;
+    --gap-margin: 16px;
+    --gap-padding: 16px;
+    --gap-p: calc(17px + 4px);
+    --gap-p-compact: calc(17px * 0.75);
+}
+
+.tag-plugin.note {
+    position: relative;
+    padding: .25rem 1rem;
+    border-radius: 16px;
+    background: var(--theme-block);
+    overflow: hidden;
+    border: 1px solid var(--theme-border);
+    color: var(--text-p1)
+}
+
+.tag-plugin.note>.title {
+    --fsp: calc(17px - 1px);
+    font-size: var(--fsp);
+    line-height: 1.5;
+    margin-top: var(--gap-p-compact);
+    font-weight: 500;
+    color: var(--text)
+}
+
+.tag-plugin.note>.body {
+    margin-top: var(--gap-p-compact);
+    margin-bottom: var(--gap-p-compact)
+}
+
+.tag-plugin.note>.body,.tag-plugin.note>.body p {
+    --fsp: calc(17px - 2px);
+    font-size: var(--fsp);
+    line-height: 1.5
+}
+
+.tag-plugin.note>.body:only-child {
+    margin: calc(var(--gap-p) - .25rem) 0
+}
+
+.tag-plugin.note[color] code {
+    background: 0 0
+}
+
+.tag-plugin.note[child=codeblock] {
+    padding: 0;
+    background: var(--theme-codeblock)
+}
+
+.tag-plugin.note[child=codeblock]>.body:only-child,.tag-plugin.note[child=codeblock]>.title {
+    margin-top: 0
+}
+
+.tag-plugin.note[child=codeblock]>.body {
+    margin-bottom: 0
+}
+
+.tag-plugin.note[child=codeblock] .highlight {
+    margin: 0;
+    border: none;
+    background: 0 0
+}
+
+.tag-plugin.note[child=codeblock] .highlight figcaption span {
+    background: var(--theme-block)
+}
+
+.tag-plugin.note[child=codeblock] .highlight+.highlight {
+    border-top: 1px dashed var(--theme-border);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0
+}
+
+.tag-plugin.note[child=tabs]>.body {
+    margin: 0
+}
+
+.tag-plugin.note[child=tabs]>.body>.tabs {
+    margin-top: .5rem
+}
+
+.tag-plugin.note[child=iframe] {
+    padding: 0
+}
+
+.tag-plugin.note[child=iframe]>.body {
+    margin: 0
+}
+
+.tag-plugin.note[child=iframe]>.body iframe {
+    margin: 0
+}
+
+.tag-plugin .tag-plugin.note {
+    --gap-p: 1rem
+}
+
+.l_body[type=story] .tag-plugin.note .title p:not([class]) {
+    text-indent: 0
+}
+
+.tag-plugin.okr {
+    position: relative;
+    border-radius: 16px;
+    background: var(--theme-block);
+    border: 1px solid var(--theme-border);
+    overflow: hidden;
+    color: var(--text-p1);
+    line-height: 1.5
+}
+
+.tag-plugin.okr .o .title {
+    font-size: .9375rem
+}
+
+.tag-plugin.okr .o .note {
+    font-size: .875rem
+}
+
+.tag-plugin.okr .o .note p {
+    font-size: .875rem
+}
+
+.tag-plugin.okr .kr .title {
+    font-size: .875rem
+}
+
+.tag-plugin.okr .kr .note {
+    font-size: .875rem
+}
+
+.tag-plugin.okr .kr .note .tag-plugin,.tag-plugin.okr .kr .note li,.tag-plugin.okr .kr .note p {
+    font-size: .875rem
+}
+
+.tag-plugin.okr .title {
+    font-weight: 600;
+    display: block
+}
+
+.tag-plugin.okr .note {
+    font-weight: 400;
+    display: block;
+    margin-top: .5rem
+}
+
+.tag-plugin.okr .note>p,.tag-plugin.okr .note>ul {
+    margin-top: .25rem;
+    margin-bottom: .25rem
+}
+
+.tag-plugin.okr .note>.tag-plugin {
+    margin-top: .25rem;
+    margin-bottom: .25rem
+}
+
+.tag-plugin.okr .note>:last-child {
+    margin-bottom: 0
+}
+
+.tag-plugin.note>.title {
+    --fsp: calc(17px - 1px);
+    font-size: var(--fsp);
+    line-height: 1.5;
+    margin-top: var(--gap-p-compact);
+    font-weight: 500;
+    color: var(--text);
+}
+
+.tag-plugin.note>.body, .tag-plugin.note>.body p {
+    --fsp: calc(17px - 2px);
+    font-size: var(--fsp);
+    line-height: 1.5;
+}
+.tag-plugin.note>.body {
+    margin-top: var(--gap-p-compact);
+    margin-bottom: var(--gap-p-compact);
+}
+
+.tag-plugin.noteol, .tag-plugin.notep, .tag-plugin.noteul {
+    margin-top: calc(var(--gap-p) - 4px);
+    margin-bottom: calc(var(--gap-p) - 4px);
+}
+.highlight *, .tag-plugin *, blockquote *, ol *, p *, table *, ul * {
+    --gap-p: var(--gap-p-compact);
+}
+
+.tag-plugin.copy {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    background: var(--card);
+    border-radius: 8px;
+    border: 1px solid var(--block-border);
+    overflow: hidden;
+    width: 100%;
+    min-width: 200px
+}
+.tag-plugin.copy span {
+    padding: .25rem .5rem;
+    margin: auto .5rem;
+    line-height: 1;
+    border-radius: 4px;
+    background: hsla(var(--hue) var(--sat) var(--light) / .2);
+    color: var(--theme);
+    font-size: .8125rem;
+    font-weight: 700;
+    flex-shrink: 0
+}
+.tag-plugin.copy input.copy-area {
+     display: inline-block;
+     padding: 0;
+     width: 100%;
+     color: var(--text-p2);
+     line-height: 3;
+     text-indent: 1rem;
+}
+.tag-plugin.copy span+input.copy-area {
+     text-indent: 0;
+}
+.tag-plugin.copy button.copy-btn {
+    margin: 2px 2px 2px 0;
+    border-radius: calc(8px - 2px);
+    display: inline-block;
+    background: var(--block);
+    transition: all .2s ease-out;
+    -moz-transition: all .2s ease-out;
+    -webkit-transition: all .2s ease-out;
+    -o-transition: all .2s ease-out;
+    line-height: 0;
+    font-size: 1rem;
+    padding: 0 .75rem;
+    color: var(--text-p2)
+}
+.tag-plugin.gallery .flow-cell:hover .image-meta,.tag-plugin.gallery .grid-cell:hover .image-meta {
+    background: rgba(0,0,0,.5)
+}
+
+.tag-plugin.gallery .flow-cell:hover .image-caption,.tag-plugin.gallery .grid-cell:hover .image-caption {
+    color: #fff
+}
+
+.tag-plugin.gallery img {
+    object-fit: cover;
+    max-height: 100%;
+    display: block
+}
+
+.tag-plugin.gallery .image-meta {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    background: 0 0;
+    transition: background .2s ease-out;
+    -moz-transition: background .2s ease-out;
+    -webkit-transition: background .2s ease-out;
+    -o-transition: background .2s ease-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end
+}
+
+.tag-plugin.gallery .image-meta .image-caption {
+    display: block;
+    font-size: .8125rem;
+    color: transparent;
+    pointer-events: none;
+    line-height: 1.2;
+    margin: .5rem;
+    transition: color .2s ease-out;
+    -moz-transition: color .2s ease-out;
+    -webkit-transition: color .2s ease-out;
+    -o-transition: color .2s ease-out;
+    text-align: left
+}
+
+.tag-plugin.gallery .image-meta .image-caption:empty {
+    display: none
+}
+
+.tag-plugin.image .image-meta {
+    display: flex;
+    justify-content: center;
+    padding: .5rem 0
+}
+
+.tag-plugin.image .image-meta .image-caption {
+    display: inline-block;
+    font-size: .8125rem;
+    color: var(--text-p2);
+    line-height: 1.5;
+    text-align: justify
+}
+
+.tag-plugin.image .image-meta .image-caption:empty {
+    display: none
+}
+.tag-plugin.mark {
+    padding: 1px 2px;
+    border-radius: 2px;
+    background: var(--theme-mark);
+    color: var(--text)
+}
+
+.tag-plugin.hashtag {
+    padding: 0 8px;
+    border-radius: 100px;
+    background: var(--theme-block);
+    color: var(--text-p2);
+    margin: 2px 0;
+    display: inline-flex;
+    align-items: center;
+    --fsp: calc(17px - 2px);
+    font-size: var(--fsp);
+    font-weight: 500;
+    transition: background .2s ease-out,color .2s ease-out;
+    -moz-transition: background .2s ease-out,color .2s ease-out;
+    -webkit-transition: background .2s ease-out,color .2s ease-out;
+    -o-transition: background .2s ease-out,color .2s ease-out
+}
+
+.tag-plugin.hashtag span {
+    margin: 0 2px
+}
+
+.tag-plugin.hashtag:hover {
+    background: var(--text-p2);
+    color: var(--theme-block)
+}
+
+svg.icon {
+    width: 1em;
+    height: 1em;
+    vertical-align: middle;
+    fill: currentColor;
+    overflow: hidden;
+}

@@ -1,11 +1,11 @@
 {
-	"id": "sample-plugin",
-	"name": "Sample Plugin",
-	"version": "1.0.0",
+	"id": "obsidian-stellar-tags-renderer",
+	"name": "Stellar Tags Renderer",
+	"version": "0.0.1",
 	"minAppVersion": "0.15.0",
-	"description": "Demonstrates some of the capabilities of the Obsidian API.",
-	"author": "Obsidian",
-	"authorUrl": "https://obsidian.md",
-	"fundingUrl": "https://obsidian.md/pricing",
+	"description": "A Stellar Tags Renderer for Obsidian.",
+	"author": "thun888",
+	"authorUrl": "https://www.hzchu.top",
+	"fundingUrl": "https://blog.hzchu.top/about",
 	"isDesktopOnly": false
 }
