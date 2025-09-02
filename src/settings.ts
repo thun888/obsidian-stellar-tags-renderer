@@ -1,5 +1,5 @@
 import { App, PluginSettingTab, Setting, ButtonComponent } from "obsidian";
-import EmojiInlinePlugin from "./plugin";
+import EmojiInlinePlugin from "../main";
 
 // --- 设置项的接口和默认值 ---
 export interface EmojiPluginSettings {
