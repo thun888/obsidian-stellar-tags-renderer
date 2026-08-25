@@ -6,13 +6,19 @@
 
 ### emoji
 
+从配置的表情源加载图片，或直接指定 URL。
+
 ```text
-{% emoji type name %}
+{% emoji [source] name [height:1.75em] %}
+{% emoji url:http... [name:alt] [height:1.75em] %}
 ```
 
-从配置的表情源加载图片。`type` 对应设置面板中的表情源类型，`name` 为具体表情名。
+- `source`: 表情源类型（可选），对应设置面板中的 Key；省略时自动使用第一个已配置的源
+- `name`: 表情名称（必填）
+- `url`: 直接指定图片 URL，存在时不再查找 source 配置
+- `height`: 图片高度（可选），默认 `1.8rem`
 
-示例：`{% emoji neko happy %}` → 从 `neko` 源加载 `happy.png`
+示例：`{% emoji neko happy %}`、`{% emoji url:https://example.com/emoji.png name:alt height:2em %}`
 
 ### inline-label
 

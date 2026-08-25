@@ -18,7 +18,7 @@ export interface TagRenderer {
 }
 
 // 正则表达式
-const EMOJI_REGEX = /\{\%\s*emoji\s+([^\s]+)\s+([^\s]+)\s*\%\}/g;
+const EMOJI_REGEX = /\{\%\s*emoji\s+([^\%]+?)\s*\%\}/g;
 const INLINE_LABELS_REGEX = /\{\%\s*(u|emp|wavy|del|sup|sub|kbd|blur|psw|mark)\s+([^\%\}]+?)(?:\s+color:\s*([^\s\%\}]+))?\s*\%\}/g;
 const CHECKBOX_RADIO_REGEX = /\{\%\s*(checkbox|radio)\s+([^%\}]+)\s*\%\}/g;
 const NOTE_REGEX = /\{\%\s*note\s+([^%\}]+)\s*\%\}/g;
@@ -76,11 +76,51 @@ export const emojiPreviewPlugin = (settings: EmojiPluginSettings) =>
               view.state.selection.main.to <= end;
 
             if (!cursorInside) {
-              const type = match[1];
-              const name = match[2];
+              const rawArgs = match[1].trim();
+              const parts = rawArgs.split(/\s+/);
+              const params: Record<string, string> = {};
+              const positional: string[] = [];
+
+              for (const part of parts) {
+                if (part.includes(":")) {
+                  const idx = part.indexOf(":");
+                  const key = part.slice(0, idx);
+                  const value = part.slice(idx + 1);
+                  params[key] = value;
+                } else {
+                  positional.push(part);
+                }
+              }
+
+              let type: string, name: string, directUrl: string | undefined, height: string | undefined;
+
+              if (params.url) {
+                // {% emoji url:http... [name:alt] [height:1.75em] %}
+                directUrl = params.url;
+                name = params.name || "";
+                height = params.height;
+                type = "";
+              } else {
+                // {% emoji [source] name [height:1.75em] %}
+                if (positional.length >= 2) {
+                  type = positional[0];
+                  name = positional[1];
+                } else if (positional.length === 1) {
+                  // only one positional, treat as name with default source
+                  const sources = this.settings.emojiSources;
+                  const firstKey = Object.keys(sources)[0];
+                  type = firstKey || "";
+                  name = positional[0];
+                } else {
+                  type = "";
+                  name = "";
+                }
+                height = params.height;
+              }
+
               widgets.push(
                 Decoration.replace({
-                  widget: new EmojiWidget(type, name, this.settings),
+                  widget: new EmojiWidget(type, name, this.settings, directUrl, height),
                 }).range(start, end)
               );
             }
