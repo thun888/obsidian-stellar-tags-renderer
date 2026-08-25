@@ -6,3 +6,4 @@ export { CopyWidget } from './copy';
 export { ImageWidget } from './image';
 export { HashtagWidget } from './hashtag';
 export { TipWidget } from './tip';
+export { DividerWidget } from './divider';

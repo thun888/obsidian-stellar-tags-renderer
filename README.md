@@ -131,6 +131,21 @@
 
 示例：`{% tip text:这是一个注解 %}重要词句{% endtip %}`、`{% tip %}纯文本{% endtip %}`
 
+### divider
+
+分隔线，支持方向和内容。
+
+> 该标签不受官方支持
+
+```text
+{% divider direction:方向 内容 %}
+```
+
+- `direction`: 线条方向（可选），值为 `left`、`right` 或 `center`；不指定时两侧都有线
+- 内容为分隔线上的文字（必填）
+
+示例：`{% divider 第一章 %}`、`{% divider direction:center 未完待续 %}`、`{% divider direction:left --- %}`
+
 ## 设置
 
 ### 在实时预览中渲染

@@ -9,7 +9,7 @@ import {
 import { editorLivePreviewField } from "obsidian";
 import { EmojiPluginSettings } from "./settings";
 
-import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget } from "./components";
+import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget, DividerWidget } from "./components";
 
 
 // 渲染器接口
@@ -26,6 +26,7 @@ const COPY_REGEX = /\{\%\s*copy\s+([^%\}]+)\s*\%\}/g;
 const IMAGE_REGEX = /\{\%\s*image\s+([^%\}]+)\s*\%\}/g;
 const HASHTAG_REGEX = /\{\%\s*hashtag\s+([^%\}]+)\s*\%\}/g;
 const TIP_REGEX = /\{\%\s*tip\s+(?:text:\s*([^\%\}]+))?\s*\%\}([\s\S]*?)\{\%\s*endtip\s*\%\}/gi;
+const DIVIDER_REGEX = /\{\%\s*divider\s+([^%]*)\%\}/g;
 
 
 // --- CodeMirror 6 视图插件 ---
@@ -258,6 +259,45 @@ export const emojiPreviewPlugin = (settings: EmojiPluginSettings) =>
               widgets.push(
                 Decoration.replace({
                   widget: new TipWidget(tipText, content),
+                }).range(start, end)
+              );
+            }
+          }
+
+          // divider
+          while ((match = DIVIDER_REGEX.exec(text))) {
+            const start = from + match.index;
+            const end = start + match[0].length;
+
+            const cursorInside =
+              view.state.selection.main.from >= start &&
+              view.state.selection.main.to <= end;
+
+            if (!cursorInside) {
+              const rawArgs = match[1].trim();
+              const parts = rawArgs.split(/\s+/);
+              const params: Record<string, string> = {};
+              let content = "";
+
+              for (const part of parts) {
+                if (part.includes(":")) {
+                  const idx = part.indexOf(":");
+                  const key = part.slice(0, idx);
+                  const value = part.slice(idx + 1);
+                  params[key] = value;
+                } else {
+                  content += (content ? " " : "") + part;
+                }
+              }
+
+              if (!content) {
+                continue;
+              }
+
+              const direction = params.direction || "";
+              widgets.push(
+                Decoration.replace({
+                  widget: new DividerWidget(direction, content),
                 }).range(start, end)
               );
             }

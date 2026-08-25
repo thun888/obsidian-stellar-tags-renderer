@@ -1071,6 +1071,24 @@ kbd {
     opacity: 1
 }
 
+.divider-container {
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
+
+.divider-container .divider-line {
+    flex: 1;
+    border-bottom: 1px dashed #ccc
+}
+
+.divider-container .divider-text {
+    padding: 0 15px;
+    color: #888;
+    font-size: 14px;
+    font-family: "Microsoft YaHei", sans-serif
+}
+
 svg.icon {
     width: 1em;
     height: 1em;
