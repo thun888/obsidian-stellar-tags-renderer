@@ -9,7 +9,7 @@ import {
 import { editorLivePreviewField } from "obsidian";
 import { EmojiPluginSettings } from "./settings";
 
-import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget } from "./components";
+import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget } from "./components";
 
 
 // 渲染器接口
@@ -25,6 +25,7 @@ const NOTE_REGEX = /\{\%\s*note\s+([^%\}]+)\s*\%\}/g;
 const COPY_REGEX = /\{\%\s*copy\s+([^%\}]+)\s*\%\}/g;
 const IMAGE_REGEX = /\{\%\s*image\s+([^%\}]+)\s*\%\}/g;
 const HASHTAG_REGEX = /\{\%\s*hashtag\s+([^%\}]+)\s*\%\}/g;
+const TIP_REGEX = /\{\%\s*tip\s+(?:text:\s*([^\%\}]+))?\s*\%\}([\s\S]*?)\{\%\s*endtip\s*\%\}/gi;
 
 
 // --- CodeMirror 6 视图插件 ---
@@ -197,6 +198,26 @@ export const emojiPreviewPlugin = (settings: EmojiPluginSettings) =>
               widgets.push(
                 Decoration.replace({
                   widget: new HashtagWidget(args),
+                }).range(start, end)
+              );
+            }
+          }
+
+          // tip
+          while ((match = TIP_REGEX.exec(text))) {
+            const start = from + match.index;
+            const end = start + match[0].length;
+
+            const cursorInside =
+              view.state.selection.main.from >= start &&
+              view.state.selection.main.to <= end;
+
+            if (!cursorInside) {
+              const tipText = (match[1] || "").trim();
+              const content = match[2].trim();
+              widgets.push(
+                Decoration.replace({
+                  widget: new TipWidget(tipText, content),
                 }).range(start, end)
               );
             }

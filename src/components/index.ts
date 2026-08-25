@@ -5,3 +5,4 @@ export { NoteWidget } from './note';
 export { CopyWidget } from './copy';
 export { ImageWidget } from './image';
 export { HashtagWidget } from './hashtag';
+export { TipWidget } from './tip';

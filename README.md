@@ -112,6 +112,19 @@
 
 示例：`{% hashtag #obsidian href:https://obsidian.md color:blue %}`、`{% hashtag #tag %}`
 
+### tip
+
+带提示气泡的文本，支持跨行内容。
+
+```text
+{% tip text:提示文字 %}显示内容{% endtip %}
+```
+
+- `text`: 悬停/聚焦时显示的提示文字（可选）
+- 标签之间的内容为正文显示部分
+
+示例：`{% tip text:这是一个注解 %}重要词句{% endtip %}`、`{% tip %}纯文本{% endtip %}`
+
 ## 设置
 
 ### 在实时预览中渲染

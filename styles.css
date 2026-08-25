@@ -1037,6 +1037,40 @@ kbd {
     color: var(--theme-block)
 }
 
+.tag-plugin.tip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dashed var(--text-p3);
+    cursor: help
+}
+
+.tag-plugin.tip .tip-bubble {
+    position: absolute;
+    bottom: 135%;
+    left: 50%;
+    transform: translateX(-50%);
+    display: block;
+    width: max-content;
+    max-width: 18rem;
+    padding: .35rem .7rem;
+    background: #fff;
+    border: 1px solid #ccc;
+    text-shadow: none;
+    color: var(--text-p1);
+    font-size: calc(var(--fs-root) - 2px);
+    line-height: 1.5;
+    white-space: normal;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .2s ease;
+    z-index: 10
+}
+
+.tag-plugin.tip:hover .tip-bubble,
+.tag-plugin.tip:focus .tip-bubble {
+    opacity: 1
+}
+
 svg.icon {
     width: 1em;
     height: 1em;
