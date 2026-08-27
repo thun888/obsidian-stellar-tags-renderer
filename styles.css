@@ -804,6 +804,11 @@ kbd {
     text-indent: 0
 }
 
+/* 多行 box/tip 标签：首行已被 widget 替换，其余原始行隐藏 */
+.cm-line.stellar-hidden {
+    display: none !important
+}
+
 .tag-plugin.okr {
     position: relative;
     border-radius: 16px;

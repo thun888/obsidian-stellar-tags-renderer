@@ -9,7 +9,7 @@ import {
 import { editorLivePreviewField } from "obsidian";
 import { EmojiPluginSettings } from "./settings";
 
-import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget, DividerWidget } from "./components";
+import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget, DividerWidget, BoxWidget } from "./components";
 
 
 // 渲染器接口
@@ -22,10 +22,43 @@ const EMOJI_REGEX = /\{\%\s*emoji\s+([^\%]+?)\s*\%\}/g;
 const INLINE_LABELS_REGEX = /\{\%\s*(u|emp|wavy|del|sup|sub|kbd|blur|psw|mark)\s+([^\%\}]+?)(?:\s+color:\s*([^\s\%\}]+))?\s*\%\}/g;
 const CHECKBOX_RADIO_REGEX = /\{\%\s*(checkbox|radio)\s+([^%\}]+)\s*\%\}/g;
 const NOTE_REGEX = /\{\%\s*note\s+([^%\}]+)\s*\%\}/g;
+const BOX_REGEX = /\{\%\s*box[ \t]+([^%\}\n]*?)[ \t]*%\}([\s\S]*?)\{\%\s*endbox[ \t]*%\}/gi;
+
+/**
+ * CodeMirror 6 不允许通过插件插入跨行的 replace 装饰（会抛
+ * "Decorations that replace line breaks may not be specified via plugins"）。
+ * 单行匹配：整段替换为 widget；
+ * 跨行匹配：在首行替换开头标签为 widget，其余行用行装饰隐藏。
+ */
+function pushBlockDecoration(
+  widgets: any[],
+  view: EditorView,
+  matchStart: number,
+  matchEnd: number,
+  openTagEnd: number,
+  widget: WidgetType
+) {
+  const firstLine = view.state.doc.lineAt(matchStart);
+  if (matchEnd <= firstLine.to) {
+    widgets.push(Decoration.replace({widget}).range(matchStart, matchEnd));
+    return;
+  }
+  widgets.push(
+    Decoration.replace({widget}).range(matchStart, openTagEnd)
+  );
+  const lastLineNo = view.state.doc.lineAt(matchEnd - 1).number;
+  for (let lineNo = firstLine.number + 1; lineNo <= lastLineNo; lineNo++) {
+    widgets.push(
+      Decoration.line({class: "stellar-hidden"}).range(
+        view.state.doc.line(lineNo).from
+      )
+    );
+  }
+}
 const COPY_REGEX = /\{\%\s*copy\s+([^%\}]+)\s*\%\}/g;
 const IMAGE_REGEX = /\{\%\s*image\s+([^%\}]+)\s*\%\}/g;
 const HASHTAG_REGEX = /\{\%\s*hashtag\s+([^%\}]+)\s*\%\}/g;
-const TIP_REGEX = /\{\%\s*tip\s+(?:text:\s*([^\%\}]+))?\s*\%\}([\s\S]*?)\{\%\s*endtip\s*\%\}/gi;
+const TIP_REGEX = /\{\%\s*tip[ \t]+(?:text:[ \t]*([^%\}\n]+))?[ \t]*%\}([\s\S]*?)\{\%\s*endtip[ \t]*%\}/gi;
 const DIVIDER_REGEX = /\{\%\s*divider\s+([^%]*)\%\}/g;
 
 
@@ -256,10 +289,38 @@ export const emojiPreviewPlugin = (settings: EmojiPluginSettings) =>
             if (!cursorInside) {
               const tipText = (match[1] || "").trim();
               const content = match[2].trim();
-              widgets.push(
-                Decoration.replace({
-                  widget: new TipWidget(tipText, content),
-                }).range(start, end)
+              const openTagEnd = start + match[0].indexOf("%}") + 2;
+              pushBlockDecoration(
+                widgets,
+                view,
+                start,
+                end,
+                openTagEnd,
+                new TipWidget(tipText, content)
+              );
+            }
+          }
+
+          // box
+          while ((match = BOX_REGEX.exec(text))) {
+            const start = from + match.index;
+            const end = start + match[0].length;
+
+            const cursorInside =
+              view.state.selection.main.from >= start &&
+              view.state.selection.main.to <= end;
+
+            if (!cursorInside) {
+              const args = (match[1] || "").trim();
+              const content = match[2] || "";
+              const openTagEnd = start + match[0].indexOf("%}") + 2;
+              pushBlockDecoration(
+                widgets,
+                view,
+                start,
+                end,
+                openTagEnd,
+                new BoxWidget(args, content)
               );
             }
           }

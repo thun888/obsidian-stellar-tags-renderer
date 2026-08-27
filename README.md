@@ -70,6 +70,31 @@
 
 示例：`{% note Info This is a tip color:blue %}`、`{% note Just content %}`
 
+### box
+
+带标题的多行提示框。
+
+```text
+{% box [color:color] [child:codeblock/tabs] title %}
+body
+{% endbox %}
+```
+
+- `color`: 颜色（可选）
+- `child`: 子元素类型（可选），值为 `codeblock` 或 `tabs`
+- `title`: 标题（可选），第一个非键值参数
+- 标签之间的多行内容作为正文，每行渲染为一段
+
+示例：
+
+```text
+{% box color:blue 提示 %}
+第一行内容
+第二行内容
+{% endbox %}
+```
+
+
 ### copy
 
 可复制的文本框，支持 GitHub URL 格式化。
