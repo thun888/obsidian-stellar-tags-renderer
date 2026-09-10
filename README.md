@@ -146,6 +146,21 @@
 
 示例：`{% divider 第一章 %}`、`{% divider direction:center 未完待续 %}`、`{% divider direction:left --- %}`
 
+### or
+
+> 该标签不受官方支持
+
+"或" 选项列表，多个候选项以 `/` 分隔展示。
+
+```text
+{% or content1 content2 content3 %}
+```
+
+- 每个空白分隔的片段为一个候选项（必填，至少一个）
+- 悬停候选项时高亮显示
+
+示例：`{% or 番茄 黄瓜 青椒 %}`、`{% or 线上 线下 %}`
+
 ## 设置
 
 ### 在实时预览中渲染
@@ -157,7 +172,7 @@
 管理表情来源的 URL 模板。URL 中的 `{name}` 会被替换为表情的具体名称。
 
 - **Key**: 类型标识（如 `neko`、`qq`）
-- **Value**: URL 模板（如 `https://emoticons.hzchu.top/emoticons/neko/{name}.png`）
+- **Value**: URL 模板（如 `https://emoticons.assets.hzchu.top/emoticons/neko/{name}.png`）
 
 ## 安装
 

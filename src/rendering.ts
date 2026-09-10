@@ -9,7 +9,7 @@ import {
 import { editorLivePreviewField } from "obsidian";
 import { EmojiPluginSettings } from "./settings";
 
-import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget, DividerWidget } from "./components";
+import { EmojiWidget, InlineLabelWidget, CheckboxRadioWidget, CopyWidget, NoteWidget, ImageWidget, HashtagWidget, TipWidget, DividerWidget, OrWidget } from "./components";
 
 
 // 渲染器接口
@@ -27,6 +27,7 @@ const IMAGE_REGEX = /\{\%\s*image\s+([^%\}]+)\s*\%\}/g;
 const HASHTAG_REGEX = /\{\%\s*hashtag\s+([^%\}]+)\s*\%\}/g;
 const TIP_REGEX = /\{\%\s*tip\s+(?:text:\s*([^\%\}]+))?\s*\%\}([\s\S]*?)\{\%\s*endtip\s*\%\}/gi;
 const DIVIDER_REGEX = /\{\%\s*divider\s+([^%]*)\%\}/g;
+const OR_REGEX = /\{\%\s*or\s+([^%\}]+)\s*\%\}/g;
 
 
 // --- CodeMirror 6 视图插件 ---
@@ -298,6 +299,34 @@ export const emojiPreviewPlugin = (settings: EmojiPluginSettings) =>
               widgets.push(
                 Decoration.replace({
                   widget: new DividerWidget(direction, content),
+                }).range(start, end)
+              );
+            }
+          }
+
+          // or
+          while ((match = OR_REGEX.exec(text))) {
+            const start = from + match.index;
+            const end = start + match[0].length;
+
+            const cursorInside =
+              view.state.selection.main.from >= start &&
+              view.state.selection.main.to <= end;
+
+            if (!cursorInside) {
+              const args = match[1];
+              const items = args
+                .split(/\s+/)
+                .map((item) => item.trim())
+                .filter((item) => item);
+
+              if (!items.length) {
+                continue;
+              }
+
+              widgets.push(
+                Decoration.replace({
+                  widget: new OrWidget(items.join(" ")),
                 }).range(start, end)
               );
             }
